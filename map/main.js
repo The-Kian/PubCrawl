@@ -13,19 +13,17 @@ new Map({ //new map
   target: 'map-container', // throw it in map-container
   layers: [
     new TileLayer({
-      source: new OSM(),
+      source: new OSM(), //chuck  map on a layer
     }),
-    new VectorLayer({ //
-      source: new VectorSource({
-        source: new VectorSource({
-          format: new GeoJSON(),
-          url: './data/countries.json'
-        })
+    new VectorLayer({ //layer for details
+      source: new VectorSource({       //source for info
+          format: new GeoJSON(),  //GeoJSON is a filetype
+          url: './data/countries.json' //country info
       })
     })
   ],
-  view: new View({
-    center: fromLonLat([	-1.548567, 	53.801277]),
-    zoom: 12,
+  view: new View({ //View
+    center: fromLonLat([	-1.548567, 	53.801277]), //center on leeds
+    zoom: 12, //zoom in 
   }),
 });
