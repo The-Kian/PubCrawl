@@ -9,7 +9,10 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 
 
-new Map({ //new map
+
+
+
+var map = new Map({ //new map
   target: 'map-container', // throw it in map-container
   layers: [
     new TileLayer({
@@ -18,7 +21,7 @@ new Map({ //new map
     new VectorLayer({ //layer for details
       source: new VectorSource({       //source for info
           format: new GeoJSON(),  //GeoJSON is a filetype
-          url: './data/countries.json' //country info
+          url: './data/pubs.json' //pub info
       })
     })
   ],
@@ -27,3 +30,15 @@ new Map({ //new map
     zoom: 12, //zoom in 
   }),
 });
+
+var markers = new ol.layer.Vector({
+  source: new ol.source.Vector(),
+  style: new ol.style.Style({
+    image: new ol.style.Icon({
+      anchor: [0.5, 1],
+      src: 'marker.png'
+    })
+  })
+});
+
+map.addLayer(markers);
